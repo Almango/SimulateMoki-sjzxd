@@ -1,0 +1,22 @@
+
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定义可复用的条纹图案 -->
+  <defs>
+    <!-- 将旋转角度改为45度以修正方向，保持条纹周期为20 -->
+    <pattern 
+      id="grayStripes" 
+      width="20" 
+      height="20" 
+      patternUnits="userSpaceOnUse" 
+      patternTransform="rotate(45)"
+    >
+<!-- 浅灰色条纹 -->
+      <rect width="40" height="50" fill="#191f1fff"/>
+      <!-- 深灰色条纹 -->
+      <rect x="10" width="10" height="200" fill="#0e1111ff"/>
+    </pattern>
+  </defs>
+  <!-- 用定义的条纹图案填充100×100的画布 -->
+  <rect width="600" height="200" fill="url(#grayStripes)"/>
+</svg>
+    
