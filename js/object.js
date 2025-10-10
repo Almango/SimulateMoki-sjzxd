@@ -67,14 +67,15 @@ const itemPool = [
     { name: "电动车电池", w: 3, h: 2, rarity: "purple", image: "/assets/images/obj-purple/电动车电池.png" },
 
 
-
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     { name: "滤毒罐", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/滤毒罐.png" },
     { name: "优秀雇员奖杯", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/优秀雇员奖杯.png" },
     { name: "卫队金扳指", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/卫队金扳指.png" },
     { name: "渡鸦项坠", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/渡鸦项坠.png" },
     { name: "海鲜粥罐头", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/海鲜粥罐头.png" },
-    { name: "营养粥罐头", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/营养粥罐头.png" },
+    { name: "营养粥罐头", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/明日方舟OST-1.png" },
     { name: "明日方舟OST-1", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/营养粥罐头.png" },
     { name: "三角蚌小珍珠", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/三角蚌小珍珠.png" },
     { name: "滤毒罐", w: 1, h: 1, rarity: "yellow", image: "/assets/images/obj-yellow/滤毒罐.png" },
