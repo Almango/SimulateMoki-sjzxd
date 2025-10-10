@@ -12,6 +12,7 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 0 auto;
 }
 
 #search-btn {
@@ -48,8 +49,6 @@ html {
     margin: auto;
 }
 
-.bottom-box {
-}
 
 #objectname {
     color: beige;

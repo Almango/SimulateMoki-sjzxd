@@ -21,8 +21,8 @@ const GRID_CONFIG = { width: 5, height: 9, cellWidth: 60, cellHeight: 60, gap: 0
 // ];
 
 const rarityConfig = {
-    green: { duration: 0 }, blue: { duration: 500 }, purple: { duration: 10 },
-    yellow: { duration: 10 }, red: { duration: 10 },key:{ duration: 4000 }
+    green: { duration: 0 }, blue: { duration: 1000 }, purple: { duration: 2000 },
+    yellow: { duration: 2500 }, red: { duration: 2500 },key:{ duration: 4000 }
 };
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -56,7 +56,7 @@ function randomItemByRarity() {
 
 function generateAndPlaceItemsSequentially() {
     let placedItems = []; let occupied = Array.from({ length: GRID_CONFIG.height }, () => Array(GRID_CONFIG.width).fill(false));
-    let itemCount = 10 + (Math.random() < 0.2 ? 1 : 0); let attempts = 0;
+    let itemCount = 5 + (Math.random() < 0.2 ? 1 : 0); let attempts = 0;
     while (placedItems.length < itemCount && attempts < 100) {
         const item = randomItemByRarity(); let positionFound = null;
         search: for (let y = 0; y <= GRID_CONFIG.height - item.h; y++) {
