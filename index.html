@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>SimulateMoki v0.3</title>
-		<link rel="stylesheet" href="css/main.css">
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SimulateMoki v1.1</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
 
-	<body>
-
-		<div class="object-box">
-			<div id="objectname">
-				<p id="status-text">重型登山包</p>
-			</div>
-			<div id="itembox">
-				<div class="bagbox">
-					<p
-						style="position: absolute; top: -7px; left: 7px;font-size: 10px;font-weight: initial;text-shadow: 1px 1px 3px#202020;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgba(255, 255, 255, 0.8);">
-						重型登山包</p>
-					<img src="./assets/images/obj-red/zxdsb.png" width="120" height="120">
-				</div>
-				<div id="item-grid-container"></div>
-
-
-			</div>
-			<div class="button-box">
-				<br><br>
-				<button id="search-btn">搜索</button><br><br>
-			
-			<button id="search-btn" onclick="refreshPage()">刷新</button>
-			</div>
-				
-				<p style="font-size:12px; text-align:center; color:gray; margin-top:10px;">本程序仅供学习<a href="https://github.com/Almango/SimulateMoki-sjzxd">Github</a></p>
-				<p style="font-size:12px; text-align:center; color:gray; margin-top:-10px;">By Almango | SimulateMoki version:0.3</p>
-			</div>
-			<br>
-			
+<body>
+<div class="constainer">
+	<div class="object-box">
+		<div id="objectname">
+			<p id="status-text">重型登山包</p>
 		</div>
-		<script src="js/object.js"></script>
-		<script src="js/script.js"></script>
-	</body>
+		<div id="itembox">
+			<div class="bagbox">
+				<p
+					style="position: absolute; top: -7px; left: 7px;font-size: 10px;font-weight: initial;text-shadow: 1px 1px 3px#202020;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgba(255, 255, 255, 0.8);">
+					GTO重型战术包</p>
+				<img src="./assets/images/obj-red/GTO.png" width="120" height="120">
+			</div>
+			<div id="item-grid-container"></div>
+		</div>
+		<div class="gain-box"><p>本局获得: <span id="total-value-span">0</span></p></div>
+		<div class="button-box">
+			<br><br>
+			<button id="search-btn">搜索</button>
+			<button id="search-btn" onclick="refreshPage()">刷新</button>
+		</div>
+		
+		<p style="font-size:12px; text-align:center; color:gray; margin-top:10px;">本程序仅供学习<a
+				href="https://github.com/Almango/SimulateMoki-sjzxd">Github</a></p>
+		<p style="font-size:12px; text-align:center; color:gray; margin-top:-10px;">By Almango | SimulateMoki
+			version:1.1</p>
+	</div>
+	<br>
+	</div>
+</div>
+	<script src="js/object.js"></script>
+	<script src="js/script.js"></script>
+</body>
 
 </html>
