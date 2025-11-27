@@ -231,7 +231,7 @@ const itemPool = [
     { name: "微型反应炉", w: 3, h: 3, rarity: "red", image: "./assets/images/obj-red/wxfyl.png", price: 3463340 },
     { name: "曼德尔超算单元", w: 3, h: 3, rarity: "red", image: "./assets/images/obj-red/mdecsdy.png", price: 2093094 },
     { name: "克劳迪乌斯半身像", w: 2, h: 3, rarity: "red", image: "./assets/images/obj-red/bsx.png", price: 1269100 },
-    { name: "雷斯的留声机", w: 2, h: 3, rarity: "red", image: "/assets/images/obj-red/lsdlsj.png", price: 1256213 },
+    { name: "雷斯的留声机", w: 2, h: 3, rarity: "red", image: "./assets/images/obj-red/lsdlsj.png", price: 1256213 },
     { name: "医疗机械人", w: 2, h: 3, rarity: "red", image: "./assets/images/obj-red/yljxr.png", price: 1283087 },
     { name: "滑膛枪", w: 4, h: 1, rarity: "red", image: "./assets/images/obj-red/htq.png", price: 660495 },
     { name: "高速磁盘阵列", w: 4, h: 3, rarity: "red", image: "./assets/images/obj-red/gscpzl.png", price: 1871000 },
@@ -245,8 +245,8 @@ const itemPool = [
     { name: "手办-阿米娅（近卫）", w: 1, h: 2, rarity: "red", image: "./assets/images/obj-red/手办-阿米娅（近卫）.png", price: 588888 },
     { name: "炫彩克小圈", w: 1, h: 2, rarity: "red", image: "./assets/images/obj-red/炫彩克小圈.png", price: 588888 },
     { name: "笔记本电脑", w: 3, h: 2, rarity: "red", image: "./assets/images/obj-red/笔记本电脑.png", price: 20200097 },
-    { name: "总裁会议室", w: 1, h: 1, rarity: "key", image: "./assets/images/obj-red/zchys.png", price: 2902885 },
     
+    { name: "总裁会议室", w: 1, h: 1, rarity: "key", image: "./assets/images/obj-red/zchys.png", price: 2902885 },
     { name: "蓝室核心", w: 1, h: 1, rarity: "key", image: "./assets/images/obj-red/蓝室核心.png", price: 4081574 },
     { name: "生物样本室", w: 1, h: 1, rarity: "key", image: "./assets/images/obj-red/生物样本室.png", price: 5795321 },
     { name: "变电站技术室", w: 1, h: 1, rarity: "key", image: "./assets/images/obj-red/变电站技术室.png", price: 3889992 },

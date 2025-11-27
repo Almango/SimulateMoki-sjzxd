@@ -4,6 +4,36 @@ const statusText = document.getElementById('status-text');
 const gridContainer = document.getElementById('item-grid-container');
 const totalValueSpan = document.getElementById('total-value-span'); // 获取显示总价值的 span
 
+// 自定义爆率功能元素
+const greenRateSlider = document.getElementById('green-rate');
+const blueRateSlider = document.getElementById('blue-rate');
+const purpleRateSlider = document.getElementById('purple-rate');
+const yellowRateSlider = document.getElementById('yellow-rate');
+const redRateSlider = document.getElementById('red-rate');
+const keyRateSlider = document.getElementById('key-rate');
+const resetRatesButton = document.getElementById('reset-rates-btn');
+const toggleDropRatesButton = document.getElementById('toggle-drop-rates');
+const dropRateControls = document.getElementById('drop-rate-controls');
+
+// 爆率显示元素
+const greenRateValue = document.getElementById('green-rate-value');
+const blueRateValue = document.getElementById('blue-rate-value');
+const purpleRateValue = document.getElementById('purple-rate-value');
+const yellowRateValue = document.getElementById('yellow-rate-value');
+const redRateValue = document.getElementById('red-rate-value');
+const keyRateValue = document.getElementById('key-rate-value');
+const totalRateValue = document.getElementById('total-rate-value');
+
+// 存储当前爆率设置
+let customRates = {
+    green: 30,
+    blue: 25,
+    purple: 20,
+    yellow: 14,
+    red: 10,
+    key: 1
+};
+
 let totalValue = 0; // 用于存储本局总价值
 
 const sounds = {
@@ -21,11 +51,85 @@ const GRID_CONFIG = { width: 5, height: 9, cellWidth: 60, cellHeight: 60, gap: 0
 // const itemPool = [ ... ]; // 物品池数据来自 object.js
 
 const rarityConfig = {
-    green: { duration: 0 }, blue: { duration: 1000 }, purple: { duration: 2000 },
-    yellow: { duration: 2500 }, red: { duration: 2500 }, key: { duration: 4000 }
+    green: { duration: 1000 }, blue: { duration: 1500 }, purple: { duration: 1700 },
+    yellow: { duration: 2500 }, red: { duration: 2500 }, key: { duration: 3500 }
 };
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// ---------- 自定义爆率功能函数 ----------
+// 更新单个爆率显示
+function updateRateDisplay(rarity, value) {
+    customRates[rarity] = value;
+    const displayElement = document.getElementById(`${rarity}-rate-value`);
+    if (displayElement) {
+        displayElement.textContent = `${value}%`;
+    }
+    updateTotalRate();
+}
+
+// 更新总概率显示
+function updateTotalRate() {
+    const total = Object.values(customRates).reduce((sum, rate) => sum + rate, 0);
+    totalRateValue.textContent = `${total}%`;
+}
+
+// 重置爆率为默认值
+function resetRates() {
+    customRates = {
+        green: 30,
+        blue: 25,
+        purple: 20,
+        yellow: 14,
+        red: 10,
+        key: 1
+    };
+    
+    // 更新滑块和显示
+    greenRateSlider.value = customRates.green;
+    blueRateSlider.value = customRates.blue;
+    purpleRateSlider.value = customRates.purple;
+    yellowRateSlider.value = customRates.yellow;
+    redRateSlider.value = customRates.red;
+    keyRateSlider.value = customRates.key;
+    
+    updateRateDisplay('green', customRates.green);
+    updateRateDisplay('blue', customRates.blue);
+    updateRateDisplay('purple', customRates.purple);
+    updateRateDisplay('yellow', customRates.yellow);
+    updateRateDisplay('red', customRates.red);
+    updateRateDisplay('key', customRates.key);
+}
+
+// 初始化自定义爆率功能
+function initCustomRates() {
+    // 默认折叠爆率设置
+    toggleDropRates();
+    
+    // 添加折叠/展开按钮事件监听器
+    toggleDropRatesButton.addEventListener('click', toggleDropRates);
+    
+    // 添加滑块事件监听器
+    greenRateSlider.addEventListener('input', () => updateRateDisplay('green', parseInt(greenRateSlider.value)));
+    blueRateSlider.addEventListener('input', () => updateRateDisplay('blue', parseInt(blueRateSlider.value)));
+    purpleRateSlider.addEventListener('input', () => updateRateDisplay('purple', parseInt(purpleRateSlider.value)));
+    yellowRateSlider.addEventListener('input', () => updateRateDisplay('yellow', parseInt(yellowRateSlider.value)));
+    redRateSlider.addEventListener('input', () => updateRateDisplay('red', parseInt(redRateSlider.value)));
+    keyRateSlider.addEventListener('input', () => updateRateDisplay('key', parseInt(keyRateSlider.value)));
+    
+    // 添加重置按钮事件监听器
+    resetRatesButton.addEventListener('click', resetRates);
+    
+    // 初始化显示
+    updateTotalRate();
+}
+
+// 折叠/展开爆率设置
+function toggleDropRates() {
+    dropRateControls.classList.toggle('collapsed');
+    toggleDropRatesButton.classList.toggle('collapsed');
+    toggleDropRatesButton.textContent = dropRateControls.classList.contains('collapsed') ? '▶' : '▼';
+}
 
 // ---------- 第 2 步: 创建数字滚动动画函数 ----------
 function animateValueUpdate(start, end, duration) {
@@ -52,33 +156,29 @@ function createBackgroundGrid() {
 }
 
 /**
- * 根据指定的概率随机选择一个物品。
- * - Key (钥匙):  1%
- * - 红色 (red):   10%
- * - 金色 (yellow): 10%
- * - 紫色 (purple): 20%
- * - 蓝色 (blue):   30%
- * - 绿色 (green):  29%
+ * 根据用户自定义的概率随机选择一个物品。
  */
 function randomItemByRarity() {
     // 确保池子不为空
     if (itemPool.length === 0) {
         return { name: "NULL", w: 1, h: 1, rarity: "green", image: "path/to/default.png", price: 0 };
     }
-    const rand = Math.random(); // 生成一个 0 到 1 之间的随机数
+    
+    // 计算总概率
+    const totalProbability = Object.values(customRates).reduce((sum, rate) => sum + rate, 0);
+    
+    // 生成一个 0 到总概率之间的随机数
+    const rand = Math.random() * totalProbability;
+    let cumulativeProbability = 0;
     let rarityToPick;
-    if (rand < 0.01) {         // 1% 的概率
-        rarityToPick = 'key';
-    } else if (rand < 0.11) {  // 10% 的概率 (累积至 0.01 + 0.10 = 0.11)
-        rarityToPick = 'red';
-    } else if (rand < 0.21) {  // 10% 的概率 (累积至 0.11 + 0.10 = 0.21)
-        rarityToPick = 'yellow';
-    } else if (rand < 0.41) {  // 20% 的概率 (累积至 0.21 + 0.20 = 0.41)
-        rarityToPick = 'purple';
-    } else if (rand < 0.71) {  // 30% 的概率 (累积至 0.41 + 0.30 = 0.71)
-        rarityToPick = 'blue';
-    } else {                   // 剩下 29% 的概率
-        rarityToPick = 'green';
+    
+    // 确定选中的稀有度
+    for (const [rarity, rate] of Object.entries(customRates)) {
+        cumulativeProbability += rate;
+        if (rand < cumulativeProbability) {
+            rarityToPick = rarity;
+            break;
+        }
     }
     
     // 从总物品池中筛选出符合选定稀有度的所有物品
@@ -168,7 +268,7 @@ async function revealSingleItem(itemBlock, itemData) {
     const startValue = totalValue;
     totalValue += price;
     animateValueUpdate(startValue, totalValue, 800);
-    await delay(1200);
+    await delay(0); // 保留短延迟确保搜索过程自然
 }
 
 async function startSearch() {
@@ -214,3 +314,4 @@ function refreshPage() {
 
 searchButton.addEventListener('click', startSearch);
 createBackgroundGrid();
+initCustomRates(); // 初始化自定义爆率功能
