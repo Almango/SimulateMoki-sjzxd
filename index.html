@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SimulateMoki v1.1</title>
+	<meta name="viewport" content="width=458, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+	<title>SimulateMoki v{version}</title>
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -38,14 +37,14 @@
 			</div>
 			<div class="drop-rate-controls" id="drop-rate-controls">
 				<div class="drop-rate-item">
-					<label>绿色 (30%)</label>
-					<input type="range" id="green-rate" min="0" max="100" value="30" step="1">
-					<span id="green-rate-value">30%</span>
+					<label>绿色 (35%)</label>
+					<input type="range" id="green-rate" min="0" max="100" value="35" step="1">
+					<span id="green-rate-value">35%</span>
 				</div>
 				<div class="drop-rate-item">
-					<label>蓝色 (25%)</label>
-					<input type="range" id="blue-rate" min="0" max="100" value="25" step="1">
-					<span id="blue-rate-value">25%</span>
+					<label>蓝色 (30%)</label>
+					<input type="range" id="blue-rate" min="0" max="100" value="30" step="1">
+					<span id="blue-rate-value">30%</span>
 				</div>
 				<div class="drop-rate-item">
 					<label>紫色 (20%)</label>
@@ -53,14 +52,14 @@
 					<span id="purple-rate-value">20%</span>
 				</div>
 				<div class="drop-rate-item">
-					<label>金色 (14%)</label>
-					<input type="range" id="yellow-rate" min="0" max="100" value="14" step="1">
-					<span id="yellow-rate-value">14%</span>
+					<label>金色 (10%)</label>
+					<input type="range" id="yellow-rate" min="0" max="100" value="10" step="1">
+					<span id="yellow-rate-value">10%</span>
 				</div>
 				<div class="drop-rate-item">
-					<label>红色 (10%)</label>
-					<input type="range" id="red-rate" min="0" max="100" value="10" step="1">
-					<span id="red-rate-value">10%</span>
+					<label>红色 (4%)</label>
+					<input type="range" id="red-rate" min="0" max="100" value="4" step="1">
+					<span id="red-rate-value">4%</span>
 				</div>
 				<div class="drop-rate-item">
 					<label>钥匙 (1%)</label>
@@ -73,13 +72,14 @@
 		</div>
 		<p style="font-size:12px; text-align:center; color:gray; margin-top:10px;">本程序仅供学习<a
 				href="https://github.com/Almango/SimulateMoki-sjzxd">Github</a></p>
-		<p style="font-size:12px; text-align:center; color:gray; margin-top:-10px;">Powered By Almango | SimulateMoki
-			version: 2.0</p>
+		<p style="font-size:12px; text-align:center; color:gray; margin-top:-10px;">By Almango | SimulateMoki
+			version: <span class="version-text">{version}</span></p>
 	</div>
 	<br>
 	</div>
 </div>
 	<script src="js/object.js"></script>
+	<script src="js/custom.js"></script>
 	<script src="js/script.js"></script>
 </body>
 
