@@ -7,7 +7,6 @@ html {
     color: white;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
-    min-width: 458px;
 }
 
 /* 隐藏滚动条 */
@@ -122,6 +121,29 @@ html::-webkit-scrollbar,
     padding: 15px;
     margin: auto;
     overflow-y: auto;
+}
+
+/* 响应式设计：当窗口宽度小于object-box宽度时，隐藏bagbox并调整布局 */
+@media (max-width: 468px) {
+    .bagbox {
+        display: none;
+    }
+    
+    /* 让object-box宽度自适应窗口 */
+    .object-box {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    /* 调整itembox布局，让item-grid-container靠在最左边 */
+    #itembox {
+        justify-content: flex-start;
+    }
+    
+    /* 确保item-grid-container靠在最左边 */
+    #item-grid-container {
+        margin: 0;
+    }
 }
 
 /* 自定义爆率设置样式 */
