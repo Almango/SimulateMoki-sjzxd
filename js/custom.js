@@ -157,7 +157,7 @@ function initCustomRates() {
 
 // 版本号更新功能
 function updateVersion() {
-    const version = '3.0'; // 设置当前版本号
+    const version = '3.2'; // 设置当前版本号
     const elements = document.querySelectorAll('title, .version-text');
     
     elements.forEach(element => {
