@@ -7,7 +7,7 @@ html {
     color: white;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
-    min-width: 458px; /* 设置最小宽度，防止窗口过度缩小 */
+    min-width: 458px;
 }
 
 /* 隐藏滚动条 */
@@ -301,6 +301,7 @@ html::-webkit-scrollbar,
     /* 添加整体边框，避免边缘线条过细 */
     border: 1px solid rgb(39, 44, 44);
     box-sizing: border-box;
+
 }
 
 .grid-cell {
