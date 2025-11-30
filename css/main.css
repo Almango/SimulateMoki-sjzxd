@@ -114,7 +114,8 @@ html::-webkit-scrollbar,
 
 }
 .object-box {
-    width: 458px;
+    width: 100%;
+    max-width: 458px;
     height: 100vh;
     background-color: #080c0e;
     box-sizing: border-box;
@@ -123,16 +124,10 @@ html::-webkit-scrollbar,
     overflow-y: auto;
 }
 
-/* 响应式设计：当窗口宽度小于object-box宽度时，隐藏bagbox并调整布局 */
+/* 响应式设计：在小屏幕上隐藏bagbox并调整布局 */
 @media (max-width: 468px) {
     .bagbox {
         display: none;
-    }
-    
-    /* 让object-box宽度自适应窗口 */
-    .object-box {
-        width: 100%;
-        padding: 10px;
     }
     
     /* 调整itembox布局，让item-grid-container靠在最左边 */
@@ -143,6 +138,11 @@ html::-webkit-scrollbar,
     /* 确保item-grid-container靠在最左边 */
     #item-grid-container {
         margin: 0;
+    }
+    
+    /* 调整控制栏和爆率设置的边距 */
+    .control-bar, .drop-rate-container {
+        margin: 10px 0;
     }
 }
 
