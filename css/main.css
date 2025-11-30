@@ -33,7 +33,6 @@ html::-webkit-scrollbar,
     align-items: center;
     background-color: #171a1c;
     border: 1px solid rgb(50, 52, 54);
-    border-radius: 5px;
     padding: 10px;
     margin: 15px 0;
     width: 100%;
@@ -48,7 +47,6 @@ html::-webkit-scrollbar,
     align-items: center;
     margin: 0 0 10px 0;
     padding: 5px;
-    border-radius: 3px;
 }
 
 .gain-box p {
@@ -73,25 +71,44 @@ html::-webkit-scrollbar,
     width: 100%;
 }
 
-#search-btn, #refresh-btn {
+#search-btn {
     width: 100px;
     height: 35px;
-    color: rgb(0, 0, 0);
+    color: white;
     border: none;
     font-size: 16px;
     font-weight: 500;
     background: transparent;
     text-align: center;
     cursor: pointer;
-    background-color: #dfdfdf;
+    background-color: #24a7ff;
     transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
-    border-radius: 5px;
     flex-shrink: 0;
 }
 
-#search-btn:hover, #refresh-btn:hover {
-    background-color: #bbb;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+#refresh-btn {
+    width: 100px;
+    height: 35px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    background: transparent;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ff4848;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    flex-shrink: 0;
+}
+
+#search-btn:hover {
+    background-color: #1d8ed6;
+    box-shadow: 0 2px 5px rgba(36, 167, 255, 0.3);
+}
+
+#refresh-btn:hover {
+    background-color: #e03e3e;
+    box-shadow: 0 2px 5px rgba(255, 72, 72, 0.3);
 }
 
 #search-btn:active, #refresh-btn:active {
@@ -150,7 +167,6 @@ html::-webkit-scrollbar,
 .drop-rate-container {
     background-color: #171a1c;
     border: 1px solid rgb(50, 52, 54);
-    border-radius: 5px;
     margin: 15px 0;
     overflow: hidden;
 }
@@ -223,7 +239,6 @@ html::-webkit-scrollbar,
 .drop-rate-item input[type="range"] {
     flex: 1;
     height: 5px;
-    border-radius: 5px;
     background: #333;
     outline: none;
     -webkit-appearance: none;
@@ -235,7 +250,7 @@ html::-webkit-scrollbar,
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: #e4212a;
+    background: #24a7ff;
     cursor: pointer;
 }
 
@@ -243,7 +258,7 @@ html::-webkit-scrollbar,
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: #e4212a;
+    background: #24a7ff;
     cursor: pointer;
     border: none;
 }
@@ -259,17 +274,22 @@ html::-webkit-scrollbar,
     height: 30px;
     margin: 15px auto 10px auto;
     display: block;
-    color: rgb(0, 0, 0);
+    color: white;
     border: none;
     font-size: 14px;
-    background: #dfdfdf;
+    background-color: #6c757d;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
 }
 
 #reset-rates-btn:hover {
-    background-color: #bbb;
+    background-color: #5a6268;
+    box-shadow: 0 2px 5px rgba(108, 117, 125, 0.3);
+}
+
+#reset-rates-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .total-rate {

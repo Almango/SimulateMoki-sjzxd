@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
@@ -8,76 +9,90 @@
 </head>
 
 <body>
-<div class="constainer">
-	<div class="object-box">
-		<div id="objectname">
-			<p id="status-text">重型登山包</p>
-		</div>
-		<div id="itembox">
-			<div class="bagbox">
-				<p
-					style="position: absolute; top: -7px; left: 7px;font-size: 10px;font-weight: initial;text-shadow: 1px 1px 3px#202020;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgba(255, 255, 255, 0.8);">
-					GTO重型战术包</p>
-				<img src="./assets/images/obj-red/GTO.png" width="120" height="120">
+	<div class="constainer">
+		<div class="object-box">
+			<div id="objectname">
+				<p id="status-text">重型登山包</p>
 			</div>
-			<div id="item-grid-container"></div>
-		</div>
-		<div class="control-bar">
-			<div class="gain-box"><p>本局获得: <span id="total-value-span">0</span></p></div>
-			<div class="button-group">
-				<button id="search-btn">搜索</button>
-				<button id="refresh-btn" onclick="refreshPage()">刷新</button>
+			<div id="itembox">
+				<div class="bagbox">
+					<p
+						style="position: absolute; top: -7px; left: 7px;font-size: 10px;font-weight: initial;text-shadow: 1px 1px 3px#202020;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgba(255, 255, 255, 0.8);">
+						GTO重型战术包</p>
+					<img src="./assets/images/obj-red/GTO.png" width="120" height="120">
+				</div>
+				<div id="item-grid-container"></div>
 			</div>
-		</div>
-		<!-- 自定义爆率设置区域 -->
-		<div class="drop-rate-container">
-			<div class="drop-rate-header">
-				<h3>自定义爆率</h3>
-				<button id="toggle-drop-rates" class="toggle-btn">▼</button>
-			</div>
-			<div class="drop-rate-controls" id="drop-rate-controls">
-				<div class="drop-rate-item">
-					<label>绿色 (35%)</label>
-					<input type="range" id="green-rate" min="0" max="100" value="35" step="1">
-					<span id="green-rate-value">35%</span>
+			<div class="control-bar">
+				<div class="gain-box">
+					<p>本局获得: <span id="total-value-span">0</span></p>
 				</div>
-				<div class="drop-rate-item">
-					<label>蓝色 (30%)</label>
-					<input type="range" id="blue-rate" min="0" max="100" value="30" step="1">
-					<span id="blue-rate-value">30%</span>
-				</div>
-				<div class="drop-rate-item">
-					<label>紫色 (20%)</label>
-					<input type="range" id="purple-rate" min="0" max="100" value="20" step="1">
-					<span id="purple-rate-value">20%</span>
-				</div>
-				<div class="drop-rate-item">
-					<label>金色 (10%)</label>
-					<input type="range" id="yellow-rate" min="0" max="100" value="10" step="1">
-					<span id="yellow-rate-value">10%</span>
-				</div>
-				<div class="drop-rate-item">
-					<label>红色 (4%)</label>
-					<input type="range" id="red-rate" min="0" max="100" value="4" step="1">
-					<span id="red-rate-value">4%</span>
-				</div>
-				<div class="drop-rate-item">
-					<label>钥匙 (1%)</label>
-					<input type="range" id="key-rate" min="0" max="100" value="1" step="1">
-					<span id="key-rate-value">1%</span>
+				<div class="button-group">
+					<button id="search-btn">搜索容器</button>
+					<button id="refresh-btn" onclick="refreshPage()">刷新容器</button>
 				</div>
 			</div>
-			<button id="reset-rates-btn">重置爆率</button>
-			<p class="total-rate">总概率: <span id="total-rate-value">100%</span></p>
-		</div>
-		<p style="font-size:12px; text-align:center; color:gray; margin-top:10px;">本程序仅供学习<a
-				href="https://github.com/Almango/SimulateMoki-sjzxd">Github</a></p>
-		<p style="font-size:12px; text-align:center; color:gray; margin-top:-10px;">By Almango | SimulateMoki
+			<!-- 自定义设置区域 -->
+			<div class="drop-rate-container">
+				<div class="drop-rate-header">
+					<h3>自定义</h3>
+					<button id="toggle-drop-rates" class="toggle-btn">▼</button>
+				</div>
+				<div class="drop-rate-controls" id="drop-rate-controls">
+					<div class="drop-rate-item">
+						<label>绿色 (35%)</label>
+						<input type="range" id="green-rate" min="0" max="100" value="35" step="1">
+						<span id="green-rate-value">35%</span>
+					</div>
+					<div class="drop-rate-item">
+						<label>蓝色 (30%)</label>
+						<input type="range" id="blue-rate" min="0" max="100" value="30" step="1">
+						<span id="blue-rate-value">30%</span>
+					</div>
+					<div class="drop-rate-item">
+						<label>紫色 (20%)</label>
+						<input type="range" id="purple-rate" min="0" max="100" value="20" step="1">
+						<span id="purple-rate-value">20%</span>
+					</div>
+					<div class="drop-rate-item">
+						<label>金色 (10%)</label>
+						<input type="range" id="yellow-rate" min="0" max="100" value="10" step="1">
+						<span id="yellow-rate-value">10%</span>
+					</div>
+					<div class="drop-rate-item">
+						<label>红色 (4%)</label>
+						<input type="range" id="red-rate" min="0" max="100" value="4" step="1">
+						<span id="red-rate-value">4%</span>
+					</div>
+					<div class="drop-rate-item">
+						<label>钥匙 (1%)</label>
+						<input type="range" id="key-rate" min="0" max="100" value="1" step="1">
+						<span id="key-rate-value">1%</span>
+					</div>
+					<p class="total-rate">总概率: <span id="total-rate-value">100%</span></p>
+					<hr style="border: 1px solid #333; margin: 10px 0;">
+					<div class="drop-rate-item">
+						<label>最小数量 (1)</label>
+						<input type="range" id="min-items" min="1" max="45" value="3" step="1">
+						<span id="min-items-value">3</span>
+					</div>
+					<div class="drop-rate-item">
+						<label>最大数量 (5)</label>
+						<input type="range" id="max-items" min="1" max="45" value="5" step="1">
+						<span id="max-items-value">5</span>
+					</div>
+				</div>
+				<button id="reset-rates-btn">重置设定</button>
+			</div>
+			<br>
+			<p style="font-size:12px; text-align:center; color:gray; margin-top:10px;">本程序仅供学习<a
+			href="https://github.com/Almango/SimulateMoki-sjzxd">Github</a></p>
+			<p style="font-size:12px; text-align:center; color:gray; margin-top:-10px;">By Almango | SimulateMoki
 			version: <span class="version-text">{version}</span></p>
+		</div>
+		<br>
 	</div>
-	<br>
 	</div>
-</div>
 	<script src="js/object.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/script.js"></script>

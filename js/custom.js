@@ -19,6 +19,14 @@ const redRateValue = document.getElementById('red-rate-value');
 const keyRateValue = document.getElementById('key-rate-value');
 const totalRateValue = document.getElementById('total-rate-value');
 
+// 出货数量控制元素
+const minItemsSlider = document.getElementById('min-items');
+const maxItemsSlider = document.getElementById('max-items');
+
+// 出货数量显示元素
+const minItemsValue = document.getElementById('min-items-value');
+const maxItemsValue = document.getElementById('max-items-value');
+
 // 存储当前爆率设置
 let customRates = {
     green: 35,
@@ -27,6 +35,12 @@ let customRates = {
     yellow: 10,
     red: 4,
     key: 1
+};
+
+// 存储当前出货数量设置
+let itemCountSettings = {
+    min: 3,
+    max: 5
 };
 
 // 更新单个爆率显示
@@ -45,6 +59,24 @@ function updateTotalRate() {
     totalRateValue.textContent = `${total}%`;
 }
 
+// 更新出货数量显示
+function updateItemCountDisplay(type, value) {
+    itemCountSettings[type] = value;
+    const displayElement = document.getElementById(`${type}-items-value`);
+    if (displayElement) {
+        displayElement.textContent = value;
+    }
+    
+    // 确保最大值不小于最小值
+    if (type === 'min' && value > itemCountSettings.max) {
+        maxItemsSlider.value = value;
+        updateItemCountDisplay('max', value);
+    } else if (type === 'max' && value < itemCountSettings.min) {
+        minItemsSlider.value = value;
+        updateItemCountDisplay('min', value);
+    }
+}
+
 // 重置爆率为默认值
 function resetRates() {
     customRates = {
@@ -56,7 +88,13 @@ function resetRates() {
         key: 1
     };
     
-    // 更新滑块和显示
+    // 重置出货数量为默认值
+    itemCountSettings = {
+        min: 3,
+        max: 5
+    };
+    
+    // 更新爆率滑块和显示
     greenRateSlider.value = customRates.green;
     blueRateSlider.value = customRates.blue;
     purpleRateSlider.value = customRates.purple;
@@ -70,6 +108,13 @@ function resetRates() {
     updateRateDisplay('yellow', customRates.yellow);
     updateRateDisplay('red', customRates.red);
     updateRateDisplay('key', customRates.key);
+    
+    // 更新出货数量滑块和显示
+    minItemsSlider.value = itemCountSettings.min;
+    maxItemsSlider.value = itemCountSettings.max;
+    
+    updateItemCountDisplay('min', itemCountSettings.min);
+    updateItemCountDisplay('max', itemCountSettings.max);
 }
 
 // 折叠/展开爆率设置
@@ -82,12 +127,14 @@ function toggleDropRates() {
 // 初始化自定义爆率功能
 function initCustomRates() {
     // 默认折叠爆率设置
-    toggleDropRates();
+    dropRateControls.classList.add('collapsed');
+    toggleDropRatesButton.classList.add('collapsed');
+    toggleDropRatesButton.textContent = '▶';
     
     // 添加折叠/展开按钮事件监听器
     toggleDropRatesButton.addEventListener('click', toggleDropRates);
     
-    // 添加滑块事件监听器
+    // 添加爆率滑块事件监听器
     greenRateSlider.addEventListener('input', () => updateRateDisplay('green', parseInt(greenRateSlider.value)));
     blueRateSlider.addEventListener('input', () => updateRateDisplay('blue', parseInt(blueRateSlider.value)));
     purpleRateSlider.addEventListener('input', () => updateRateDisplay('purple', parseInt(purpleRateSlider.value)));
@@ -95,11 +142,17 @@ function initCustomRates() {
     redRateSlider.addEventListener('input', () => updateRateDisplay('red', parseInt(redRateSlider.value)));
     keyRateSlider.addEventListener('input', () => updateRateDisplay('key', parseInt(keyRateSlider.value)));
     
+    // 添加出货数量滑块事件监听器
+    minItemsSlider.addEventListener('input', () => updateItemCountDisplay('min', parseInt(minItemsSlider.value)));
+    maxItemsSlider.addEventListener('input', () => updateItemCountDisplay('max', parseInt(maxItemsSlider.value)));
+    
     // 添加重置按钮事件监听器
     resetRatesButton.addEventListener('click', resetRates);
     
     // 初始化显示
     updateTotalRate();
+    updateItemCountDisplay('min', itemCountSettings.min);
+    updateItemCountDisplay('max', itemCountSettings.max);
 }
 
 // 版本号更新功能
@@ -119,8 +172,10 @@ document.addEventListener('DOMContentLoaded', updateVersion);
 
 // 导出变量和函数以便其他脚本使用
 window.customRates = customRates;
+window.itemCountSettings = itemCountSettings;
 window.updateRateDisplay = updateRateDisplay;
 window.updateTotalRate = updateTotalRate;
+window.updateItemCountDisplay = updateItemCountDisplay;
 window.resetRates = resetRates;
 window.toggleDropRates = toggleDropRates;
 window.initCustomRates = initCustomRates;
