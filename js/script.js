@@ -1,3 +1,17 @@
+// 版本号更新功能
+function updateVersion() {
+    const version = '4.0'; // 设置当前版本号
+    const elements = document.querySelectorAll('title, .version-text');
+    
+    elements.forEach(element => {
+        if (element.textContent.includes('{version}')) {
+            element.textContent = element.textContent.replace(/\{version\}/g, version);
+        }
+    });
+}
+// 页面加载完成后更新版本号
+document.addEventListener('DOMContentLoaded', updateVersion);
+
 // ---------- 第 1 步: 获取元素并初始化变量 ----------
 const searchButton = document.getElementById('search-btn');
 const statusText = document.getElementById('status-text');
@@ -13,6 +27,8 @@ const sounds = {
     green: new Audio("./assets/video/green.mp3"),
     bluep: new Audio("./assets/video/bluep.mp3"),
     redy: new Audio("./assets/video/redy.mp3")
+
+    
 };
 
 sounds.searching.loop = true;
@@ -24,7 +40,13 @@ const GRID_CONFIG = { width: 5, height: 9, cellWidth: 60, cellHeight: 60, gap: 0
 
 const rarityConfig = {
     green: { duration: 1000 }, blue: { duration: 1500 }, purple: { duration: 1700 },
-    yellow: { duration: 2500 }, red: { duration: 2500 }, key: { duration: 3500 }
+    yellow: { duration: 2500 }, red: { duration: 2500 },
+    //     green: { duration: 0 }, blue: { duration: 0 }, purple: { duration: 0 },
+    // yellow: { duration: 0 }, red: { duration: 0 },
+
+    'key-red': { duration: 4500 }, 'key-yellow': { duration: 3500 },     
+    'key-purple': { duration: 3000 },'key-blue': { duration: 3000 }, 
+
 };
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -91,12 +113,23 @@ function randomItemByRarity() {
     }
     
     // 从总物品池中筛选出符合选定稀有度的所有物品
-    const filteredPool = itemPool.filter(item => item.rarity === rarityToPick);
+    let filteredPool;
+    if (rarityToPick === 'key') {
+        // 如果选择的是钥匙稀有度，筛选出所有类型的钥匙
+        filteredPool = itemPool.filter(item => 
+            ['key-red', 'key-blue', 'key-purple', 'key-yellow', 'key'].includes(item.rarity)
+        );
+    } else {
+        // 其他稀有度正常筛选
+        filteredPool = itemPool.filter(item => item.rarity === rarityToPick);
+    }
+    
     // 如果筛选后的池子是空的，则发出警告并从整个池子中随机选择一个作为后备
     if (filteredPool.length === 0) {
         console.warn(`物品池中没有找到稀有度为 "${rarityToPick}" 的物品。将从所有物品中随机选取一个作为备用。`);
         return itemPool[Math.floor(Math.random() * itemPool.length)];
     }
+    
     // 从筛选后的池子中随机返回一个物品
     return filteredPool[Math.floor(Math.random() * filteredPool.length)];
 }
@@ -171,12 +204,25 @@ async function revealSingleItem(itemBlock, itemData) {
 
     // 根据物品稀有度选择要播放的音效
     let soundToPlay;
-    if (['yellow', 'red', 'key'].includes(itemData.rarity)) {
+    let rarityClass = null;
+    
+    // 处理普通物品稀有度
+    if (['yellow', 'key-yellow'].includes(itemData.rarity)) {
         soundToPlay = sounds.redy;
-    } else if (['blue', 'purple'].includes(itemData.rarity)) {
+        rarityClass = 'yellow';
+    } else if (['red', 'key-red'].includes(itemData.rarity)) {
+        soundToPlay = sounds.redy;
+        rarityClass = 'red';
+    } else if (['blue', 'key-blue'].includes(itemData.rarity)) {
+        soundToPlay = sounds.bluep;
+    } else if (['purple', 'key-purple'].includes(itemData.rarity)) {
         soundToPlay = sounds.bluep;
     } else if (itemData.rarity === 'green') {
         soundToPlay = sounds.green;
+    } else if (itemData.rarity === 'key') {
+        // 兼容旧的key类型
+        soundToPlay = sounds.redy;
+        rarityClass = 'red';
     }
 
     if (soundToPlay) {
@@ -185,8 +231,8 @@ async function revealSingleItem(itemBlock, itemData) {
     }
 
     // 设置物品块样式
-    if (itemData.rarity === 'yellow' || itemData.rarity === 'red') {
-        itemBlock.classList.add(`rarity-${itemData.rarity}`);
+    if (rarityClass) {
+        itemBlock.classList.add(`rarity-${rarityClass}`);
     }
     itemBlock.classList.remove('searching');
     itemBlock.style.backgroundImage = `url('${itemData.image}')`;
@@ -290,5 +336,4 @@ function refreshPage() {
 searchButton.addEventListener('click', startSearch);
 createBackgroundGrid();
 initCustomRates(); // 初始化自定义爆率功能
-
-
+window.updateVersion = updateVersion;

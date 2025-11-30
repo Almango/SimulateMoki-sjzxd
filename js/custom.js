@@ -155,20 +155,7 @@ function initCustomRates() {
     updateItemCountDisplay('max', itemCountSettings.max);
 }
 
-// 版本号更新功能
-function updateVersion() {
-    const version = '3.2'; // 设置当前版本号
-    const elements = document.querySelectorAll('title, .version-text');
-    
-    elements.forEach(element => {
-        if (element.textContent.includes('{version}')) {
-            element.textContent = element.textContent.replace(/\{version\}/g, version);
-        }
-    });
-}
 
-// 页面加载完成后更新版本号
-document.addEventListener('DOMContentLoaded', updateVersion);
 
 // 导出变量和函数以便其他脚本使用
 window.customRates = customRates;
@@ -179,4 +166,3 @@ window.updateItemCountDisplay = updateItemCountDisplay;
 window.resetRates = resetRates;
 window.toggleDropRates = toggleDropRates;
 window.initCustomRates = initCustomRates;
-window.updateVersion = updateVersion;

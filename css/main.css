@@ -72,27 +72,27 @@ html::-webkit-scrollbar,
 }
 
 #search-btn {
-    width: 100px;
-    height: 35px;
+    width: 120px;
+    height: 40px;
     color: white;
     border: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     background: transparent;
     text-align: center;
     cursor: pointer;
-    background-color: #24a7ff;
+    background-color: #38be75;
     transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
     flex-shrink: 0;
 }
 
 #refresh-btn {
-    width: 100px;
-    height: 35px;
+    width: 120px;
+    height: 40px;
     color: white;
     border: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     background: transparent;
     text-align: center;
     cursor: pointer;
@@ -102,12 +102,12 @@ html::-webkit-scrollbar,
 }
 
 #search-btn:hover {
-    background-color: #1d8ed6;
+    background-color: #348d5c;
     box-shadow: 0 2px 5px rgba(36, 167, 255, 0.3);
 }
 
 #refresh-btn:hover {
-    background-color: #e03e3e;
+    background-color: #aa3e3e;
     box-shadow: 0 2px 5px rgba(255, 72, 72, 0.3);
 }
 
@@ -191,7 +191,7 @@ html::-webkit-scrollbar,
     height: 25px;
     background: none;
     border: none;
-    color: #265df5;
+    color: #ffffff;
     font-size: 14px;
     cursor: pointer;
     display: flex;
@@ -271,19 +271,20 @@ html::-webkit-scrollbar,
 
 #reset-rates-btn {
     width: 120px;
-    height: 30px;
+    height: 40px;
     margin: 15px auto 10px auto;
+    font-weight: 400;
     display: block;
     color: white;
     border: none;
     font-size: 14px;
-    background-color: #6c757d;
+    background-color: #3286f3;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
 }
 
 #reset-rates-btn:hover {
-    background-color: #5a6268;
+    background-color: #416797;
     box-shadow: 0 2px 5px rgba(108, 117, 125, 0.3);
 }
 
@@ -382,7 +383,7 @@ html::-webkit-scrollbar,
     font-size: 10px;
     font-weight: normal;
     text-shadow: 1px 1px 3px#202020;
-    white-space: initial;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     box-sizing: border-box;
