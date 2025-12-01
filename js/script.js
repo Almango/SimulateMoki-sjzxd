@@ -1,6 +1,6 @@
 // 版本号更新功能
 function updateVersion() {
-    const version = '4.0'; // 设置当前版本号
+    const version = '4.1'; // 设置当前版本号
     const elements = document.querySelectorAll('title, .version-text');
     
     elements.forEach(element => {
