@@ -49,4 +49,8 @@ git clone https://github.com/Almango/SimulateMoki-sjzxd.git
 2. 优化UI样式
 4. 优化容器搜索时的搜索时间
 
+2025.12.1(4.1)
+1. 修复背包错误名称
+
+
 
